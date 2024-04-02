@@ -13,12 +13,12 @@ export const Cart = () => {
   return (
     <div className="cart">
         <div>
-            <h1>Your Cart Items</h1>
+            <h1>Tu carrito de productos</h1>
         </div>
         <div className="cartItems">
             {PRODUCTS.map(product =>{
                 if(cartItems[product.id] !==0){
-                    return <CartItem data = {product} />
+                    return <CartItem key={product.id} data = {product} />
                 }
             })}
         </div>
@@ -26,11 +26,11 @@ export const Cart = () => {
         <div className="checkout">
             
             <p> Subtotal: ${totalAmount}</p>
-            <button onClick={()=>navigate("/")}>Continue Shopping</button>
-            <button>Checkout</button>
+            <button onClick={()=>navigate("/")}>Continua comprando</button>
+            <button onClick={()=>navigate("/pay")}>Pagar</button>
         </div>
         ) : (
-        <h1>Your Cart is Empty</h1>
+        <h1>Tu carrito esta vacio</h1>
         )}
         
         
