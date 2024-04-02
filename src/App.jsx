@@ -6,6 +6,7 @@ import { Shop } from './pages/shop/Shop'
 import { Cart } from './pages/cart/Cart'
 import { ShopContextProvider } from './context/ShopContextProvider'
 import { Pay } from './pages/cart/Pay'
+import { PayConfirmation } from './pages/cart/PayConfirmation'
 
 
 
@@ -20,7 +21,7 @@ function App() {
             <Route path="/" element={<Shop/>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path="/pay" element={<Pay/>}/>
-
+            <Route path="/pay-confirmation" element={<PayConfirmation/>}/>
 
           </Routes>
         </Router>
