@@ -1,0 +1,32 @@
+.pay {
+    text-align: center;
+}
+
+.pay .table {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 80%; /* Ajusta este valor según tus necesidades */
+}
+
+.pay table {
+    border-collapse: collapse; /* Esto hace que los bordes de las celdas se junten */
+    width: 100%;
+}
+
+.pay th, .pay td {
+    text-align: center;
+    padding: 10px; /* Ajusta este valor según tus necesidades */
+    border: 1px solid black; /* Ajusta el color y el grosor del borde según tus necesidades */
+}
+
+.bttn-confirm{
+    width: 150px;
+    height: 50px;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+}

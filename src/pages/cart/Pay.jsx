@@ -4,6 +4,7 @@ import { PRODUCTS } from "../../products"
 import { PayItem } from "./PayItem"
 import { useNavigate } from "react-router-dom"
 
+import './pay.css'
 export const Pay = () => {
     
     const {cartItems, getTotalCartAmount} =useContext(ShopContext)
@@ -25,7 +26,7 @@ export const Pay = () => {
         <div>
             <h1>Tu factura</h1>
         </div>
-        <div>
+        <div className="table">
             <table>
                 <thead>
                     <tr>
@@ -47,8 +48,8 @@ export const Pay = () => {
             </table>
             
         </div>
-        <div>Total a pagar: {totalAmount}</div>
-        <button onClick={()=>payConfirmation()}>Confirmar pago</button>
+        <h3>Total a pagar: {totalAmount}</h3>
+        <button className="bttn-confirm" onClick={()=>payConfirmation()}>Confirmar pago</button>
 
     </div>
   )

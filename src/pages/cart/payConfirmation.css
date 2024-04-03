@@ -1,0 +1,15 @@
+.bttn-keep{
+    width: 150px;
+    height: 50px;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.pay-confirmation{
+    margin-top: 100px;
+    text-align: center;
+}
