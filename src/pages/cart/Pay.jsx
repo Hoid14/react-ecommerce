@@ -2,24 +2,19 @@ import { useContext } from "react"
 import { ShopContext } from "../../context/ShopContextProvider"
 import { PRODUCTS } from "../../products"
 import { PayItem } from "./PayItem"
-import { useNavigate } from "react-router-dom"
 
 import './pay.css'
+import { useNavigate } from "react-router-dom"
 export const Pay = () => {
     
-    const {cartItems, getTotalCartAmount} =useContext(ShopContext)
+    const {cartItems, getTotalCartAmount, resetCart} =useContext(ShopContext)
 
-    const totalAmount = getTotalCartAmount()
     const navigate = useNavigate()
-    const payConfirmation = ()=>{
-        PRODUCTS.map(product => {
-            if (cartItems[product.id] !== 0) {
-                return (
-                    cartItems[product.id]=0
-                )
-            }
-        })
-        navigate("/pay-confirmation")
+    const totalAmount = getTotalCartAmount()
+    
+    const payConfirmation = () =>{
+        resetCart()
+        navigate('/pay-confirmation')
     }
   return (
     <div className="pay">

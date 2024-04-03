@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { PRODUCTS } from "../products"
 
 export const ShopContext = createContext(null)
@@ -14,6 +14,10 @@ const getDefaultCart = () =>{
 export const ShopContextProvider = (props) => {
   const [cartItems, setcartItems] = useState(getDefaultCart())
 
+  
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('cartItems', JSON.stringify(items))
+  }
   const getTotalCartAmount = () => {
     let totalAmount = 0
     for (const item in cartItems){
@@ -26,24 +30,47 @@ export const ShopContextProvider = (props) => {
     return totalAmount
   }
 
+  useEffect(()=>{
+    const cartLocalStorage = JSON.parse(localStorage.getItem('cartItems'))
+    if(cartLocalStorage){
+      setcartItems(cartLocalStorage)
+    }
+  }, [])
+
   const addToCart = (itemId) => {
-    setcartItems((prev)=>({...prev, [itemId]: prev[itemId] +1}))
+    const newCartList = {...cartItems, [itemId]: cartItems[itemId]+1}
+    setcartItems(newCartList)
+    saveToLocalStorage(newCartList)
   }
 
   const removeFromCart = (itemId) => {
-    setcartItems((prev)=>({...prev, [itemId]: prev[itemId] -1}))
+    const newCartList = {...cartItems, [itemId]: cartItems[itemId]-1}
+    setcartItems(newCartList)
+    saveToLocalStorage(newCartList)
   }
 
   const updateCartItemCount = (newAmount, itemId) =>{
-    setcartItems((prev =>({...prev,[itemId]:newAmount})))
+    const newCartList = {...cartItems, [itemId]: newAmount}
+    setcartItems(newCartList)
+    saveToLocalStorage(newCartList)
   }
+  const resetCart = ()=>{
+    PRODUCTS.map(product => {
+        if (cartItems[product.id] !== 0) {
+            return (
+                cartItems[product.id]=0
+            )
+        }
+    })
+}
 
   const contextValue = {
     cartItems,
     addToCart,
     removeFromCart, 
     updateCartItemCount,
-    getTotalCartAmount,  
+    getTotalCartAmount,
+    resetCart,  
   }
 
   
