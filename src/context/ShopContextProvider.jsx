@@ -18,6 +18,16 @@ export const ShopContextProvider = (props) => {
   const saveToLocalStorage = (items) => {
     localStorage.setItem('cartItems', JSON.stringify(items))
   }
+
+  const getTotalItems = () => {
+    let totalItems = 0
+
+    for (const item in cartItems) {
+      totalItems += cartItems[item]
+    }
+    return totalItems
+  }
+
   const getTotalCartAmount = () => {
     let totalAmount = 0
     for (const item in cartItems){
@@ -55,14 +65,11 @@ export const ShopContextProvider = (props) => {
     saveToLocalStorage(newCartList)
   }
   const resetCart = ()=>{
-    PRODUCTS.map(product => {
-        if (cartItems[product.id] !== 0) {
-            return (
-                cartItems[product.id]=0
-            )
-        }
-    })
+    const defaultCartList = getDefaultCart()
+    setcartItems(defaultCartList)
+    saveToLocalStorage(defaultCartList)
 }
+
 
   const contextValue = {
     cartItems,
@@ -70,6 +77,7 @@ export const ShopContextProvider = (props) => {
     removeFromCart, 
     updateCartItemCount,
     getTotalCartAmount,
+    getTotalItems,
     resetCart,  
   }
 
