@@ -7,7 +7,7 @@ import './pay.css'
 import { useNavigate } from "react-router-dom"
 export const Pay = () => {
     
-    const {cartItems, getTotalCartAmount, resetCart, getTotalItems} =useContext(ShopContext)
+    const {cartItems, getTotalCartAmount, resetCart} =useContext(ShopContext)
 
     const navigate = useNavigate()
     const totalAmount = getTotalCartAmount()
