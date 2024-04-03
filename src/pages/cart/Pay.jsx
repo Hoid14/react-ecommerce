@@ -46,7 +46,7 @@ export const Pay = () => {
             </table>
             
         </div>
-        <h3>Total a pagar: {totalAmount}</h3>
+        <h3>Total a pagar: ${totalAmount}</h3>
         <button className="bttn-confirm" onClick={()=>payConfirmation()}>Confirmar pago</button>
 
     </div>
