@@ -8,17 +8,21 @@ export const Navbar = () => {
   
   const {getTotalItems}=useContext(ShopContext)
 
-  console.log("navbar total items",getTotalItems())
-
   return (
     <div className="navbar">
 
         <div className="links">
-            <Link to="/">Ir a la tienda</Link>
-            <Link to="/cart">
-              <div className="shoppingCart">
-                <ShoppingCart size={32} /> ({getTotalItems()})
-              </div>
+            <Link className = "shopNavbar" to="/">Ir a la tienda</Link>
+            <Link className = "shoppingCart" to="/cart">
+              
+                <div className="cart-icon">
+                  <ShoppingCart size={32} /> 
+                </div>
+                <div className="total-items">
+                  ({getTotalItems()})
+                </div>
+                
+              
             </Link>
 
         </div>

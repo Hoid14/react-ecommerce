@@ -15,9 +15,6 @@ export const Pay = () => {
     const payConfirmation = () =>{
         resetCart()
         navigate('/pay-confirmation')
-        console.log("carrito",cartItems)
-        console.log("items actuales",getTotalItems())
-        console.log("precio total",totalAmount)
     }
 
     
